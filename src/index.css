@@ -58,3 +58,96 @@ border: 1px solid #e8e8e8;
   background-color: blue; /* Gators */
 }
 
+
+
+
+/* Carousel */
+
+.slick-dots li button:before{
+  font-size: 8px !important;
+}
+
+.slick-prev:before, .slick-next:before{
+  font-size: 40px !important;
+  font-weight: 800 !important;
+  opacity: 1 !important;
+}
+
+.slick-prev:hover , .slick-next:hover{
+  opacity: 0.7 !important;
+}
+
+.slick-prev{
+  left: -45px !important;
+}
+
+
+/* MENU */
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: white !important;
+}
+
+.ant-menu:not(.ant-menu-item-selected){
+  color: #858EA9 !important
+}
+
+.ant-menu-vertical .ant-menu-item:after, .ant-menu-vertical-left .ant-menu-item:after, .ant-menu-vertical-right .ant-menu-item:after, .ant-menu-inline .ant-menu-item:after {
+  border-right: 3px solid #1BBFBB !important;
+}
+
+.ant-menu-item:hover, .ant-menu-item-active, .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-submenu-active, .ant-menu-submenu-title:hover{
+  color: #1BBFBB !important;
+}
+
+.ant-menu-item-selected{
+  color: #343F5C !important;
+  font-weight: 500;
+}
+
+
+/* SPIN*/
+
+.ant-spin-dot i{
+  background-color: #1BBFBB !important;
+}
+
+.ant-spin-lg .ant-spin-dot {
+  font-size: 42px !important;
+  width: 42px !important;
+  height: 42px !important;
+}
+
+
+
+/* SELECT */
+
+.ant-select.select-drop{
+  margin-left: 10px;
+}
+
+/* DROPDOW */
+
+:root .ant-dropdown-trigger > .anticon:not(.anticon-ellipsis), :root .ant-dropdown-link > .anticon:not(.anticon-ellipsis){
+  font-size: 16px !important
+}
+
+
+
+h1.title{
+  font-weight: 500;
+  color: #343F5C;
+}
+
+
+.card-indicator{
+  text-align: center;
+  border-radius: 8px;
+  min-height: 200px;
+}
+
+
+.btn-details-all{
+border-color: #1BBFBB;
+color: #1BBFBB;
+}

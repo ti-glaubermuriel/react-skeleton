@@ -5,10 +5,13 @@
   "dependencies": {
     "antd": "^3.10.8",
     "react": "^16.6.3",
+    "react-absolute-grid": "^3.0.1",
     "react-dom": "^16.6.3",
     "react-muuri": "^0.1.0",
     "react-scripts": "2.1.1",
-    "react-sortable-pane": "^1.0.4"
+    "react-slick": "^0.23.2",
+    "react-sortable-pane": "^1.0.4",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "react-scripts start",

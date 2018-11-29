@@ -1,0 +1,17 @@
+
+
+
+.App-sider{
+  position: 'fixed';
+  z-index: 1023;
+  background: '#fff'
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -21,6 +21,33 @@ class App extends Component {
       speed: 500,
       slidesToShow: 4,
       slidesToScroll: 4,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 800,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 1
+          }
+        }
+      ]
       /*autoplay: true,
       autoplaySpeed: 5000*/
     };
@@ -106,15 +133,24 @@ class App extends Component {
                 <Row >
                 <Col span={24} style={{padding: '15px 50px 50px'}}>
                 <Slider {...settings} >
-                  <div><div style={{padding: '0px 30px 10px 30px'}}><Card className="card-indicator"> <Spin size="large" /> </Card></div></div>
-                  <div><div style={{padding: '0px 30px 10px 30px'}}><Card><p>2</p></Card></div></div>
-                  <div><div style={{padding: '0px 30px 10px 30px'}}><Card><p>3</p></Card></div></div>
-                  <div><div style={{padding: '0px 30px 10px 30px'}}><Card><p>4</p></Card></div></div>
-                  <div><div style={{padding: '0px 30px 10px 30px'}}><Card><p>5</p></Card></div></div>
-                  <div><div style={{padding: '0px 30px 10px 30px'}}><Card><p>6</p></Card></div></div>
-                  <div><div style={{padding: '0px 30px 10px 30px'}}><Card><p>7</p></Card></div></div>
-                  <div><div style={{padding: '0px 30px 10px 30px'}}><Card><p>8</p></Card></div></div>
-                  <div><div style={{padding: '0px 30px 10px 30px'}}><Card><p>9</p></Card></div></div>
+                  <div><div style={{padding: '0px 30px 10px 30px'}}>
+                  <Card className="card-indicator"> 
+                    <div className="card-number">
+                      <h2>358</h2>
+                    </div>
+                    <div className="card-sub-title">
+                      Pacientes atendidos
+                    </div>
+                  </Card>
+                  </div></div>
+                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>2</p></Card></div></div>
+                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>3</p></Card></div></div>
+                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>4</p></Card></div></div>
+                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>5</p></Card></div></div>
+                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>6</p></Card></div></div>
+                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>7</p></Card></div></div>
+                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>8</p></Card></div></div>
+                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>9</p></Card></div></div>
                   </Slider>
                   </Col>
                 </Row>

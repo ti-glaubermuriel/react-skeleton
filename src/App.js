@@ -89,7 +89,7 @@ class App extends Component {
 
         
 
-          <Select defaultValue="1"  className="select-drop" style={{ width: 200 }} >
+          <Select defaultValue="1"  className="select-drop">
             <Option value="1">Hospital Santa Lúcia</Option>
             <Option value="2">Hospital das Clínicas USP</Option>
             <Option value="Yiminghe">Hospital Samaritano</Option>

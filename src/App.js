@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Layout, Menu, Button, Icon, Select, Card, Row, Col, Avatar, Spin, Dropdown, Divider   } from 'antd';
+import moment from 'moment';
+import { Layout, Menu, Button, Icon, Select, Card, Row, Col, Avatar, Spin, Dropdown, Divider, DatePicker, Tag      } from 'antd';
 import Slider from "react-slick";
 import iconColor from './assets/icon_color.png';
 import './App.css';
@@ -10,6 +11,9 @@ import "slick-carousel/slick/slick-theme.css";
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 const Option = Select.Option;
+const { MonthPicker, RangePicker } = DatePicker;
+
+const dateFormat = 'DD/MM/YYYY';
 
 
 class App extends Component {
@@ -84,7 +88,7 @@ class App extends Component {
         <Header style={{ position: 'fixed', zIndex: 1024, width: '100%' }}>
 
          <Dropdown overlay={menuUser} trigger={['click']}>
-          <Button type="primary" shape="circle" icon="user" />
+          <Button type="primary" shape="circle" icon="user" className="btn-custom-primary" />
          </Dropdown>
 
         
@@ -95,6 +99,13 @@ class App extends Component {
             <Option value="Yiminghe">Hospital Samaritano</Option>
           </Select>
 
+
+          <div style={{float: "right"}}>    
+          <Tag>29 dias</Tag>
+
+
+          <RangePicker  defaultValue={[moment('02/10/2018', dateFormat), moment('01/11/2018', dateFormat)]} format={dateFormat}/>
+          </div>
         </Header>
 
         <Layout >

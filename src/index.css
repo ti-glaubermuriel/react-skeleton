@@ -138,6 +138,15 @@ border: 1px solid #e8e8e8;
 
 
 
+/* BUTTON*/
+
+.ant-btn-primary.btn-custom-primary{
+  background-color: #1BBFBB !important;
+  border-color: #1BBFBB !important;
+}
+
+
+
 h1.title{
   font-weight: 500;
   color: #343F5C;

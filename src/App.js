@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import 'moment/locale/pt-br';
+import locale from 'antd/lib/date-picker/locale/pt_BR';
 import { Layout, Menu, Button, Icon, Select, Card, Row, Col, Avatar, Spin, Dropdown, Divider, DatePicker, Tag      } from 'antd';
 import Slider from "react-slick";
 import iconColor from './assets/icon_color.png';
@@ -7,6 +9,52 @@ import './App.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
+import Highcharts from 'highcharts'
+import HighchartsReact from 'highcharts-react-official'
+
+
+const options = {
+  chart: {
+      type: 'bar'
+  },
+  credits: {
+    enabled: false
+  },
+  title: {
+      text: ''
+  },
+  xAxis: {
+      categories: ['Propofol', 'Fentanil', 'Cefazolina', 'Dipirona', 'Ondasetrona', 'Dexametasona', 'Midazolan', 'Lidocaína', 'Atropina','Metaramidol']
+  },
+  yAxis: {
+      min: 0,
+      title: {
+          text: ''
+      }
+  },
+  plotOptions: {
+      bar: {
+          'colorByPoint': true
+      }
+  },
+  colors : ['#F07396', '#FF9F40', '#FFCD56', '#4BBFBF', '#36A2EB', '#9966FF', '#C9CBCF', '#62D171', '#E270EF', '#E35C5C'],
+  series: [{
+      showInLegend: false,
+      name: ' ',
+      data: [150, 133, 121, 118, 99, 86, 81, 68, 53, 51],
+      colors : ['#F07396', '#FF9F40', '#FFCD56', '#4BBFBF', '#36A2EB', '#9966FF', '#C9CBCF', '#62D171', '#E270EF', '#E35C5C']
+  }],
+  tooltip: {
+    backgroundColor: 'gray',
+    borderWidth: 0,
+    shadow: false,
+    useHTML: true,
+    style: {
+        padding: 0,
+        color: 'white'
+    }
+}
+}
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
@@ -104,7 +152,7 @@ class App extends Component {
           <Tag>29 dias</Tag>
 
 
-          <RangePicker  defaultValue={[moment('02/10/2018', dateFormat), moment('01/11/2018', dateFormat)]} format={dateFormat}/>
+          <RangePicker locale={locale}  defaultValue={[moment('02/10/2018', dateFormat), moment('01/11/2018', dateFormat)]} format={dateFormat}/>
           </div>
         </Header>
 
@@ -144,19 +192,58 @@ class App extends Component {
                 <Row >
                 <Col span={24} style={{padding: '15px 50px 50px'}}>
                 <Slider {...settings} >
-                  <div><div style={{padding: '0px 30px 10px 30px'}}>
-                  <Card className="card-indicator"> 
-                    <div className="card-number">
-                      <h2>358</h2>
+                  <div>
+                    <div style={{padding: '0px 25px 10px 25px'}}>
+                      <Card className="card-indicator"> 
+                        <div className="card-number">
+                          <h2>340</h2>
+                        </div>
+                        <div className="card-sub-title">
+                          Pacientes atendidos
+                        </div>
+                      </Card>
                     </div>
-                    <div className="card-sub-title">
-                      Pacientes atendidos
+                  </div>
+
+                  <div>
+                    <div style={{padding: '0px 25px 10px 25px'}}>
+                      <Card className="card-indicator"> 
+                        <div className="card-number">
+                          <h2>414</h2>
+                        </div>
+                        <div className="card-sub-title">
+                          Procedimentos
+                        </div>
+                      </Card>
                     </div>
-                  </Card>
-                  </div></div>
-                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>2</p></Card></div></div>
-                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>3</p></Card></div></div>
-                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>4</p></Card></div></div>
+                  </div>
+
+                  <div>
+                    <div style={{padding: '0px 25px 10px 25px'}}>
+                      <Card className="card-indicator"> 
+                        <div className="card-number">
+                          <h2>34</h2>
+                        </div>
+                        <div className="card-sub-title">
+                          Eventos adversos
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style={{padding: '0px 25px 10px 25px'}}>
+                      <Card className="card-indicator"> 
+                        <div className="card-number">
+                          <h2>53</h2>
+                        </div>
+                        <div className="card-sub-title">
+                          Turnover médio de salas
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
+
                   <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>5</p></Card></div></div>
                   <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>6</p></Card></div></div>
                   <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>7</p></Card></div></div>
@@ -168,12 +255,15 @@ class App extends Component {
                 <Row gutter={16}>
                   <Col span={8}>
                     <Card title="Top Anestesistas" extra={<Button type="dashed" size="small" className="btn-details-all">Ver todos</Button>} loading={true} avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>
-                    <p>Top Anestesias</p>
+                    
                     </Card>
                   </Col>
                   <Col span={16}>
-                  <Card title="Top Fármacos" extra={<Button type="dashed" size="small" className="btn-details-all">Ver todos</Button>}loading={true} avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>
-                    <p>Card content</p>
+                  <Card title="Top Fármacos" extra={<Button type="dashed" size="small" className="btn-details-all">Ver todos</Button>}loading={false} avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>
+                      <HighchartsReact
+                        highcharts={Highcharts}
+                        options={options}
+                      />
                     </Card>
                   </Col>
                 </Row>

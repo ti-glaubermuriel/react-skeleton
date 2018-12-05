@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "antd": "^3.11.0",
+    "highcharts": "^6.2.0",
+    "highcharts-react-official": "^2.0.0",
     "react": "^16.6.3",
     "react-absolute-grid": "^3.0.1",
     "react-dom": "^16.6.3",

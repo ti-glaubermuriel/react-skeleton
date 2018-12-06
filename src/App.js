@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 import locale from 'antd/lib/date-picker/locale/pt_BR';
-import { Layout, Menu, Button, Icon, Select, Card, Row, Col, Avatar, Spin, Dropdown, Divider, DatePicker, Tag      } from 'antd';
+import { Layout, Menu, Button, Icon, Select, Card, Row, Col, Avatar, Spin, Dropdown, Divider, DatePicker, Tag, List      } from 'antd';
 import Slider from "react-slick";
 import iconColor from './assets/icon_color.png';
 import './App.css';
@@ -60,8 +60,35 @@ const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
 const Option = Select.Option;
 const { MonthPicker, RangePicker } = DatePicker;
-
 const dateFormat = 'DD/MM/YYYY';
+
+const dataList = [
+  {
+    title: 'Selma Ferreira',
+    description: '42 procedimentos | 580 horas',
+    avatar: 'SF'
+  },
+  {
+    title: 'Macelo Gomes',
+    description: '32 procedimentos | 470 horas',
+    avatar: 'MG'
+  },
+  {
+    title: 'Giovanne Oliveira',
+    description: '31 procedimentos | 461 horas',
+    avatar: 'GO'
+  },
+  {
+    title: 'Alessandra Andrande',
+    description: '29 procedimentos | 456 horas',
+    avatar: 'AA'
+  },
+  {
+    title: 'Altamiro Garcia',
+    description: '20 procedimentos | 423 horas',
+    avatar: 'AG'
+  },
+];
 
 
 class App extends Component {
@@ -99,9 +126,9 @@ class App extends Component {
             initialSlide: 1
           }
         }
-      ]
-      /*autoplay: true,
-      autoplaySpeed: 5000*/
+      ],
+      autoplay: true,
+      autoplaySpeed: 5000
     };
 
     const menuUser = (
@@ -244,22 +271,83 @@ class App extends Component {
                     </div>
                   </div>
 
-                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>5</p></Card></div></div>
-                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>6</p></Card></div></div>
-                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>7</p></Card></div></div>
-                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>8</p></Card></div></div>
-                  <div><div style={{padding: '0px 25px 10px 25px'}}><Card><p>9</p></Card></div></div>
+                  
+                  <div>
+                    <div style={{padding: '0px 25px 10px 25px'}}>
+                      <Card className="card-indicator"> 
+                        <div className="card-number">
+                          <h2>2</h2>
+                        </div>
+                        <div className="card-sub-title">
+                        Convênios atendidos
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
+
+                  
+                  <div>
+                    <div style={{padding: '0px 25px 10px 25px'}}>
+                      <Card className="card-indicator"> 
+                        <div className="card-number">
+                          <h2>13%</h2>
+                        </div>
+                        <div className="card-sub-title">
+                        Salas em atividade
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
+
+                  
+                  <div>
+                    <div style={{padding: '0px 25px 10px 25px'}}>
+                      <Card className="card-indicator"> 
+                        <div className="card-number">
+                          <h2>1hr</h2>
+                        </div>
+                        <div className="card-sub-title">
+                        Tempo de ocupação
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div style={{padding: '0px 25px 10px 25px'}}>
+                      <Card className="card-indicator"> 
+                        <div className="card-number">
+                          <h2>2hr</h2>
+                        </div>
+                        <div className="card-sub-title">
+                        Tempo médio em SRPA
+                        </div>
+                      </Card>
+                    </div>
+                  </div>
                   </Slider>
                   </Col>
                 </Row>
                 <Row gutter={16}>
-                  <Col span={8}>
-                    <Card title="Top Anestesistas" extra={<Button type="dashed" size="small" className="btn-details-all">Ver todos</Button>} loading={true} avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>
-                    
+                  <Col span={8} >
+                    <Card style={{minHeight: 520}} title="Top Anestesistas" extra={<Button type="dashed" size="small" className="btn-details-all">Ver todos</Button>} loading={false} avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>
+                    <List
+                        itemLayout="horizontal"
+                        dataSource={dataList}
+                        renderItem={item => (
+                          <List.Item>
+                            <List.Item.Meta
+                              avatar={<Avatar>{item.avatar}</Avatar>}
+                              title={<a href="https://ant.design">{item.title}</a>}
+                              description={item.description}
+                            />
+                          </List.Item>
+                        )}
+                      />
                     </Card>
                   </Col>
                   <Col span={16}>
-                  <Card title="Top Fármacos" extra={<Button type="dashed" size="small" className="btn-details-all">Ver todos</Button>}loading={false} avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>
+                  <Card style={{minHeight: 520}} title="Top Fármacos" extra={<Button type="dashed" size="small" className="btn-details-all">Ver todos</Button>}loading={false} avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>
                       <HighchartsReact
                         highcharts={Highcharts}
                         options={options}

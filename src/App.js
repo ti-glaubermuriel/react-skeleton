@@ -290,7 +290,7 @@ class App extends Component {
                     <div style={{padding: '0px 25px 10px 25px'}}>
                       <Card className="card-indicator"> 
                         <div className="card-number">
-                          <h2>13%</h2>
+                          <h2>13 <small>%</small></h2>
                         </div>
                         <div className="card-sub-title">
                         Salas em atividade
@@ -304,7 +304,7 @@ class App extends Component {
                     <div style={{padding: '0px 25px 10px 25px'}}>
                       <Card className="card-indicator"> 
                         <div className="card-number">
-                          <h2>1hr</h2>
+                          <h2>1 <small>hr</small></h2>
                         </div>
                         <div className="card-sub-title">
                         Tempo de ocupação
@@ -317,7 +317,7 @@ class App extends Component {
                     <div style={{padding: '0px 25px 10px 25px'}}>
                       <Card className="card-indicator"> 
                         <div className="card-number">
-                          <h2>2hr</h2>
+                          <h2>2 <small>hr</small></h2>
                         </div>
                         <div className="card-sub-title">
                         Tempo médio em SRPA

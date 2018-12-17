@@ -185,3 +185,9 @@ color: #1BBFBB;
   background: #1BBFBB !important;
 }
 
+
+
+.ant-modal-body{
+  max-height: calc(100vh - 225px) !important;
+  overflow: auto
+}

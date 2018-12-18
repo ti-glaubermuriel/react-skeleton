@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class farmacoPage extends Component {
+class PharmaPage extends Component {
 
     
     componentWillReceiveProps(nextProps){
@@ -19,4 +19,4 @@ class farmacoPage extends Component {
     }
 }
 
-export default farmacoPage;
+export default PharmaPage;

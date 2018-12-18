@@ -19,7 +19,7 @@ import iconColor from "../assets/icon_color.png";
 const { Content, Footer } = Layout;
 const FormItem = Form.Item;
 
-class loginPage extends Component {
+class LoginPage extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -32,7 +32,7 @@ class loginPage extends Component {
             .post("/web/login", values)
             .then(res => {
               login(res.headers.authorization, res.data);
-              this.props.history.push("/");
+              this.props.history.push("/app");
             })
             .catch(error => {
               console.log(error);
@@ -138,6 +138,6 @@ class loginPage extends Component {
     );
   }
 }
-const WrappedNormalLoginForm = Form.create()(loginPage);
+const WrappedNormalLoginForm = Form.create()(LoginPage);
 
 export default WrappedNormalLoginForm;

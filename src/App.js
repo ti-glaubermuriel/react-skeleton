@@ -35,8 +35,33 @@ const Option = Select.Option;
 const { MonthPicker, RangePicker } = DatePicker;
 const dateFormat = "DD/MM/YYYY";
 
+
+const TesteRoute = ({ component: Component, ...rest }) =>  (
+  <Route
+    {...rest}
+    render={props => 
+      <Component {...props} teste={rest.teste} />
+    }
+  />
+);
+
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      date_ini: '01/12/2018',
+      data_fin: '30/12/2018'
+    }
+  }
+
+  mudaData = () => {
+    this.setState({ date_ini: '01/12/kkkkkkkk',
+    data_fin: '30/12/kkkkkkkk' });
+  }
+
+
   render() {
+
     const menuUser = (
       <Menu mode="inline" style={{ width: 250 }}>
         <Menu.Item>
@@ -72,6 +97,8 @@ class App extends Component {
     );
 
     const antIcon = <Icon type="loading" style={{ fontSize: 38 }} spin />;
+
+    
 
     return (
       <BrowserRouter>
@@ -165,14 +192,15 @@ class App extends Component {
           <Layout style={{ padding: "80px 20px 20px 220px" }}>
             <h1 className="title">
               {" "}
-              <Icon type="line-chart" /> Visão geral
+              <Icon type="line-chart" /> Visão geral {this.state.data_fin}
             </h1>
+            <button onClick={this.mudaData}>clica aqui</button>
             <Content>
               
                 <Switch>
                   <Route exact path="/" component={homePage} />
                   <Route  path="/home" component={homePage} />
-                  <Route  path="/farmaco" component={farmacoPage} />
+                  <TesteRoute  path="/farmaco" component={farmacoPage} teste={this.state.data_fin}  />
                   <Route path="/login" component={loginPage} />
                 </Switch>
               

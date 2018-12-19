@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Card, Row, Col, List, Avatar, Skeleton, Modal } from "antd";
 import api from "../services/api";
-import { LetterAvatar } from "../Utils";
+import { LetterAvatar, FormatPeriodDB } from "../Utils";
 
 class ListAnaesthetists extends Component {
   state = {
@@ -17,13 +17,6 @@ class ListAnaesthetists extends Component {
     });
   };
 
-  handleOk = e => {
-    console.log(e);
-    this.setState({
-      modalVisible: false
-    });
-  };
-
   handleCancel = e => {
     console.log(e);
     this.setState({
@@ -31,9 +24,12 @@ class ListAnaesthetists extends Component {
     });
   };
 
-  componentDidMount() {
-    console.log("INCIO COMPONENTE LIST");
 
+  loadData = () => {
+    console.log('## load data ##');
+
+    this.setState({'initLoading': true});
+    
     const obj = {
       institution: {
         id: 348,
@@ -55,9 +51,8 @@ class ListAnaesthetists extends Component {
     api
       .post("/dashboard/total/anaesthetists/", obj)
       .then(res => {
-        console.log(res.data);
-
-        //setTimeout(() => this.setState({initLoading: false,listAnesthetists: res.data.slice(0, 5)}), 3000);
+        
+        //setTimeout(() => this.setState({initLoading: false,listAnesthetists: res.data.slice(0, 5), listAllAnesthetists: res.data}), 3000);
 
         this.setState({
           initLoading: false,
@@ -68,6 +63,21 @@ class ListAnaesthetists extends Component {
       .catch(error => {
         console.log(error);
       });
+
+  };
+
+
+
+  componentWillReceiveProps(nextProps) {
+    if(this.props.filters.period !== nextProps.filters.period){
+      console.log("UPDATE FILTERS COMP LIST")
+      this.loadData();
+    }
+  };
+
+  componentDidMount() {
+    console.log("LOAD COMP LIST");
+    this.loadData();
   }
 
   render() {

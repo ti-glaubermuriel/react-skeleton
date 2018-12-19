@@ -8,19 +8,43 @@ import {
   Dropdown,
   Divider,
   DatePicker,
-  Tag
+  Tag,
+  Radio,
+  Icon
 } from "antd";
 import moment from "moment";
 import "moment/locale/pt-br";
 import locale from "antd/lib/date-picker/locale/pt_BR";
 
-
-const { Header} = Layout;
+const { Header } = Layout;
 const Option = Select.Option;
 const { RangePicker } = DatePicker;
-const dateFormat = "DD/MM/YYYY";
+
+const SelectData = (props) => {
+console.log(props);
+
+return (
+  <Select className="select-drop" style={{ width: 200 }}>
+    {props.institutions.map(d => (
+      <Option value={d.id}>{d.name}</Option>
+    ))}
+  </Select>
+)};
 
 class HeaderComponent extends Component {
+  state = {
+    institutions: this.props.filters.institutions
+  };
+  
+  changeShortDate = e => {
+    this.setState({ shortDate: e.target.value });
+    this.props.setdate(e.target.value, []);
+  };
+
+  componentDidMount() {
+    console.log("LOAD HEADER");
+    console.log(this.props.filters);
+  }
 
   render() {
     const menuUser = (
@@ -58,35 +82,40 @@ class HeaderComponent extends Component {
     );
 
     return (
-        <Header style={{ position: "fixed", zIndex: 1024, width: "100%" }}>
-          <Dropdown overlay={menuUser} trigger={["click"]}>
-            <Button
-              type="primary"
-              shape="circle"
-              icon="user"
-              className="btn-custom-primary"
-            />
-          </Dropdown>
+      <Header style={{ position: "fixed", zIndex: 1024, width: "100%" }}>
+        <Dropdown overlay={menuUser} trigger={["click"]}>
+          <Button
+            type="primary"
+            shape="circle"
+            icon="user"
+            className="btn-custom-primary"
+          />
+        </Dropdown>
 
-          <Select defaultValue="1" className="select-drop">
-            <Option value="1">Hospital Santa Lúcia</Option>
-            <Option value="2">Hospital das Clínicas USP</Option>
-            <Option value="Yiminghe">Hospital Samaritano</Option>
-          </Select>
+        <SelectData institutions={this.props.state.institutions} />
 
-          <div style={{ float: "right" }}>
-            <Tag>29 dias</Tag>
+        <div style={{ float: "right" }}>
+          <Radio.Group
+            value={this.props.filters.shortDate}
+            onChange={this.changeShortDate}
+            style={{ marginRight: "5px" }}
+          >
+            <Radio.Button value="6">Semestre</Radio.Button>
+            <Radio.Button value="3">Trimestre</Radio.Button>
+            <Radio.Button value="1">Mês</Radio.Button>
+          </Radio.Group>
 
-            <RangePicker
-              locale={locale}
-              defaultValue={[
-                moment("02/10/2018", dateFormat),
-                moment("01/11/2018", dateFormat)
-              ]}
-              format={dateFormat}
-            />
-          </div>
-        </Header>
+          <RangePicker
+            locale={locale}
+            value={[
+              moment(this.props.filters.period[0], "DD/MM/YYYY"),
+              moment(this.props.filters.period[1], "DD/MM/YYYY")
+            ]}
+            format="DD/MM/YYYY"
+            onChange={this.props.setdate}
+          />
+        </div>
+      </Header>
     );
   }
 }

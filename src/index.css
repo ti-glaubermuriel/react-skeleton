@@ -192,3 +192,7 @@ color: #1BBFBB;
   overflow: auto
 }
 
+.ant-tag{
+  height: 32px !important;
+    line-height: 32px !important;
+}

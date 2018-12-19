@@ -6,12 +6,14 @@ import App from "./App";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+
+
+export const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props =>
       isAuthenticated() ? (
-        <Component {...props} />
+        <Component {...props}  filters={rest.filters}  />
       ) : (
         <Redirect
           to={{ pathname: "/login", state: { from: props.location } }}
@@ -58,3 +60,5 @@ const Routes = () => (
 );
 
 export default Routes;
+
+

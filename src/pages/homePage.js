@@ -4,15 +4,12 @@ import { Link, withRouter } from "react-router-dom";
 import ListAnaesthetists from "../components/ListAnaesthetists";
 
 class HomePage extends Component {
-  removeLoading = () => {
-    setTimeout(() => this.setState({ loading: false }), 3000);
-  };
-
   componentDidMount() {
-    console.log("LOAD APP");
+    console.log("LOAD HOME");
   }
 
   render() {
+    
     return (
       <div>
         <h1 className="title">
@@ -20,7 +17,7 @@ class HomePage extends Component {
         </h1>
         <Row gutter={16}>
           <Col span={8}>
-            <ListAnaesthetists />
+            <ListAnaesthetists filters={this.props.filters} />
           </Col>
         </Row>
       </div>

@@ -6,6 +6,9 @@ import { PrivateRoute } from "./Routes";
 import { PeriodSubtractMonth } from "./Utils";
 import api from "./services/api";
 
+import posed, { PoseGroup } from 'react-pose';
+
+
 import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

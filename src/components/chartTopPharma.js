@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Card, Avatar} from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
@@ -97,10 +98,6 @@ class chartTopPharma extends Component {
                       >
                         Ver todos
                       </Button>
-                    }
-                    loading={false}
-                    avatar={
-                      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                     }
                   >
                     <HighchartsReact

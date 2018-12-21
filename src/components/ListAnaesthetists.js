@@ -18,7 +18,6 @@ class ListAnaesthetists extends Component {
   };
 
   handleCancel = e => {
-    console.log(e);
     this.setState({
       modalVisible: false
     });
@@ -116,6 +115,7 @@ class ListAnaesthetists extends Component {
         </Skeleton>
         <Modal
           title="Top Anestesistas"
+          zIndex="565565"
           visible={this.state.modalVisible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}

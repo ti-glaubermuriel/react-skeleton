@@ -24,11 +24,7 @@ const SelectData = (props) => {
 console.log(props);
 
 return (
-  <Select className="select-drop" style={{ width: 200 }}>
-    {props.institutions.map(d => (
-      <Option value={d.id}>{d.name}</Option>
-    ))}
-  </Select>
+  'dsdsdsds'
 )};
 
 class HeaderComponent extends Component {
@@ -92,7 +88,6 @@ class HeaderComponent extends Component {
           />
         </Dropdown>
 
-        <SelectData institutions={this.props.state.institutions} />
 
         <div style={{ float: "right" }}>
           <Radio.Group

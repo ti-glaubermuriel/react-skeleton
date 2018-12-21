@@ -161,8 +161,16 @@ h1.title{
 
 
 .btn-details-all{
-border-color: #1BBFBB;
-color: #1BBFBB;
+
+border-radius: 15px !important;
+  background-color: #ddf6f6 !important;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  text-align: center;
+  color: #1bbfbb  ;
+
 }
 
 
@@ -188,7 +196,7 @@ color: #1BBFBB;
 
 
 .ant-modal-body{
-  max-height: calc(100vh - 225px) !important;
+  max-height: calc(100vh - 235px) !important;
   overflow: auto
 }
 
@@ -196,3 +204,5 @@ color: #1BBFBB;
   height: 32px !important;
     line-height: 32px !important;
 }
+
+

@@ -21,17 +21,18 @@ const Option = Select.Option;
 const { RangePicker } = DatePicker;
 
 const SelectData = (props) => {
-console.log(props);
+  console.log(props);
 
-return (
-  'dsdsdsds'
-)};
+  return (
+    'dsdsdsds'
+  )
+};
 
 class HeaderComponent extends Component {
   state = {
     institutions: this.props.filters.institutions
   };
-  
+
   changeShortDate = e => {
     this.setState({ shortDate: e.target.value });
     this.props.setdate(e.target.value, []);

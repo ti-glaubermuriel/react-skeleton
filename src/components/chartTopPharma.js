@@ -7,7 +7,8 @@ import HighchartsReact from "highcharts-react-official";
 
 const options = {
     chart: {
-      type: "bar"
+      type: "bar",
+      height: '325'
     },
     credits: {
       enabled: false
@@ -88,7 +89,7 @@ class chartTopPharma extends Component {
         return (
             <div>
                 <Card
-                    style={{ minHeight: 420 }}
+                    style={{ minHeight: 445 }}
                     title="Top Fármacos"
                     extra={
                       <Button

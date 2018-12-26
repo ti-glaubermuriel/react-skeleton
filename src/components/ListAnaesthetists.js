@@ -3,6 +3,7 @@ import { Button, Card, Row, Col, List, Avatar, Skeleton, Modal } from "antd";
 import api from "../services/api";
 import { LetterAvatar, FormatPeriodDB } from "../Utils";
 
+
 class ListAnaesthetists extends Component {
   state = {
     modalVisible: false,
@@ -84,7 +85,7 @@ class ListAnaesthetists extends Component {
 
     return (
       <Card
-        style={{ minHeight: 420, width: "100%" }}
+        style={{ minHeight: 445, width: "100%" }}
         title="Top Anestesistas"
         extra={
           <Button
@@ -97,7 +98,7 @@ class ListAnaesthetists extends Component {
           </Button>
         }
       >
-        <Skeleton loading={initLoading} active paragraph={{ rows: 10 }}>
+        <Skeleton loading={initLoading} active paragraph={{ rows: 8 }}>
           <List
             size="small"
             itemLayout="horizontal"
@@ -113,6 +114,7 @@ class ListAnaesthetists extends Component {
             )}
           />
         </Skeleton>
+
         <Modal
           title="Top Anestesistas"
           zIndex="565565"

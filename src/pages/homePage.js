@@ -3,6 +3,8 @@ import { Button, Card, Row, Col, Icon } from "antd";
 import { Link, withRouter } from "react-router-dom";
 import ListAnaesthetists from "../components/ListAnaesthetists";
 import ChartTopPharma from "../components/ChartTopPharma";
+import ChartAnestheticsInterval from "../components/ChartAnestheticsInterval";
+import ChartTopGases from "../components/ChartTopGases";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -21,7 +23,15 @@ class HomePage extends Component {
             <ListAnaesthetists filters={this.props.filters} />
           </Col>
           <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+          <ChartAnestheticsInterval filters={this.props.filters} />
+          </Col>
+        </Row>
+        <Row gutter={16} className="rowContainer">
+        <Col xs={24} sm={24} md={16} lg={16} xl={16}>
             <ChartTopPharma filters={this.props.filters} />
+          </Col>
+          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+            <ChartTopGases filters={this.props.filters} />
           </Col>
         </Row>
       </div>

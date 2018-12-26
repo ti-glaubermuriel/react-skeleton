@@ -206,3 +206,7 @@ border-radius: 15px !important;
 }
 
 
+.ant-btn.ant-btn-primary.christmas:before {
+  display: none!important;
+}
+

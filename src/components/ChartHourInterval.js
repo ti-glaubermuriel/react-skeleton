@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Button, Card, Spin} from "antd";
+import { Button, Card, Spin, Select } from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import api from "../services/api";
 
 
+const Option = Select.Option;
 
-class ChartHourProcedure extends Component {
+class ChartHourInterval extends Component {
     state = {
         loading: true,
-        categories: [],
         series: [{
             data: []
           }]
@@ -38,18 +38,22 @@ class ChartHourProcedure extends Component {
         };
 
         api
-          .post("dashboard/procedures_start_time/", obj)
+          .post("dashboard/total/procedure_start/", obj)
           .then(res => {
             
 
             this.setState({
               loading: false,
-              categories: res.data.labels,
+              
               series: [{
-                type: 'line',
                 name: 'Procedimentos',
-                color: '#1bbfbb',
-                data: res.data.data
+                innerSize: '70%',
+                showInLegend: true,
+                dataLabels: {
+                    enabled: false
+                },
+                colorByPoint: true,
+                data: [ {"name":"Entre horários","color":"#f07396","y":res.data.started, sliced: true, selected: true}, {"name":"Total","color":"#4bbfbf","y":res.data.total}]
               }]
             });
             
@@ -74,53 +78,69 @@ class ChartHourProcedure extends Component {
         this.loadData();
       };
 
+
     render() {
 
         let options = {
             credits: { enabled: false },
             chart: {
-              height: '325',
+              plotBackgroundColor: null,
+              plotBorderWidth: null,
+              plotShadow: false,
+              type: 'pie',
+              margin: [0, 0, 0, 0],
+                spacingTop: 0,
+                spacingBottom: 0,
+                spacingLeft: 0,
+                spacingRight: 0,
+                height: '325'
             },
             title: {
               text: ''
             },
-            subtitle: {
-              text: ''
-            },
-            xAxis: {
-                categories: this.state.categories
-            },
-            yAxis: {
-              title: {
-                text: ''
-              }
-            },
-            plotOptions: {
-                area: {
-                    fillColor: {
-                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                        stops: [
-                            
-                            [0, '#ddf6f6'],
-                            [1, '#1bbfbb']
-                        ]
-                    }
-                }
+            tooltip: {
+              pointFormat: ' {point.percentage:.0f}% - {point.y} Cirurgia(s)'
             },
             legend: {
-              enabled: false
+              layout: 'vertical',
+              align: 'left',
+              verticalAlign: 'bottom',
+              floating: true
             },
-        
-            series: this.state.series
-          }
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true,
+                    size:'80%',
+                }
+            },
+            series:  this.state.series
+          };
 
         return (
             <div>
                 <Card
                     style={{ minHeight: 445, width: "100%" }}
-                    title="Horário de início de cirurgias"
+                    title="Cirurgias iniciadas entre"
+                    extra={<Select defaultValue="lucy">
+                    <Option value="jack">07:30 às 08:30</Option>
+                    <Option value="jack">07:30 às 08:30</Option>
+                    <Option value="lucy">08:30 às 09:30</Option>
+                    <Option value="jack">07:30 às 08:30</Option>
+                    <Option value="jack">07:30 às 08:30</Option>
+                    <Option value="jack">07:30 às 08:30</Option>
+                    <Option value="jack">07:30 às 08:30</Option>
+                    <Option value="jack">07:30 às 08:30</Option>
+                  </Select>}
                   >
                   <Spin className="ant-spin-lg" spinning={this.state.loading}>
+
+
+
                     <HighchartsReact
                       highcharts={Highcharts}
                       options={options}
@@ -133,4 +153,4 @@ class ChartHourProcedure extends Component {
     }
 }
 
-export default ChartHourProcedure;
+export default ChartHourInterval;

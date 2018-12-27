@@ -5,6 +5,8 @@ import ListAnaesthetists from "../components/ListAnaesthetists";
 import ChartTopPharma from "../components/ChartTopPharma";
 import ChartAnestheticsInterval from "../components/ChartAnestheticsInterval";
 import ChartTopGases from "../components/ChartTopGases";
+import ChartHourProcedure from "../components/ChartHourProcedure";
+import ChartHourInterval from "../components/ChartHourInterval";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -32,6 +34,14 @@ class HomePage extends Component {
           </Col>
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
             <ChartTopGases filters={this.props.filters} />
+          </Col>
+        </Row>
+        <Row gutter={16} className="rowContainer">
+          <Col xs={24} sm={24} md={16} lg={16} xl={16}>
+            <ChartHourProcedure filters={this.props.filters} />
+          </Col>
+          <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+            <ChartHourInterval filters={this.props.filters} />
           </Col>
         </Row>
       </div>

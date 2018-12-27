@@ -109,7 +109,7 @@ border: 1px solid #e8e8e8;
 /* SPIN*/
 
 .ant-spin-dot i{
-  background-color: #1BBFBB !important;
+  background-color: #1bbfbb !important;
 }
 
 .ant-spin-lg .ant-spin-dot {
@@ -118,6 +118,13 @@ border: 1px solid #e8e8e8;
   height: 42px !important;
 }
 
+.ant-spin{
+color: #1bbfbb !important
+}
+
+.ant-spin-blur{
+  opacity: 0.3 !important;
+}
 
 
 /* SELECT */
@@ -137,6 +144,13 @@ border: 1px solid #e8e8e8;
 }
 
 
+
+/* ALERT */
+
+.ant-alert-info{
+  border: 1px solid #1bbfbb !important;
+  background-color: #ddf6f6 !important;
+}
 
 /* BUTTON*/
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, Avatar} from "antd";
+import { Button, Card, Icon} from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
@@ -88,6 +88,7 @@ class ChartAnestheticsInterval extends Component {
                 <Card
                     style={{ minHeight: 445, width: "100%" }}
                     title="Procedimentos no período"
+                    extra={<small> Selecione período para zoom <Icon type="zoom-in" /></small>}
                   >
                     <HighchartsReact
                       highcharts={Highcharts}

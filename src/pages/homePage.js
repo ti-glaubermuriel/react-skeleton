@@ -7,6 +7,7 @@ import ChartAnestheticsInterval from "../components/ChartAnestheticsInterval";
 import ChartTopGases from "../components/ChartTopGases";
 import ChartHourProcedure from "../components/ChartHourProcedure";
 import ChartHourInterval from "../components/ChartHourInterval";
+import CarouselIndicators from "../components/CarouselIndicators";
 
 class HomePage extends Component {
   componentDidMount() {
@@ -20,6 +21,11 @@ class HomePage extends Component {
         <h1 className="title">
           <Icon type="line-chart" /> Visão geral
         </h1>
+        <Row>
+          <Col span={24} style={{ padding: "15px 50px 50px" }}>
+            <CarouselIndicators/>
+          </Col>
+        </Row>
         <Row gutter={16}>
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
             <ListAnaesthetists filters={this.props.filters} />

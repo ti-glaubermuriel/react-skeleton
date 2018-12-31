@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
   Layout,
   Menu,
+  Row, Col,
   Button,
   Select,
   Avatar,
@@ -10,21 +11,32 @@ import {
   DatePicker,
   Tag,
   Radio,
-  Icon
+  Icon,
+  AutoComplete 
 } from "antd";
 import moment from "moment";
 import "moment/locale/pt-br";
 import locale from "antd/lib/date-picker/locale/pt_BR";
+import iconColor from "../assets/icon_color.png";
 
 const { Header } = Layout;
 const Option = Select.Option;
 const { RangePicker } = DatePicker;
 
-const SelectData = (props) => {
-  console.log(props);
-
+const SelectInstituicao = () => {
   return (
-    'dsdsdsds'
+    <Select 
+    showSearch="true"
+    allowClear="true"
+    notFoundContent="Não encontrado"
+    style={{ width: 250 }}
+    placeholder="Todas instituições (3)"
+    optionFilterProp="children"
+    filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}>
+    <Option value="jack">Jack</Option>
+    <Option value="lucy">Lucy</Option>
+    <Option value="tom">Tom</Option>
+  </Select>
   )
 };
 
@@ -58,6 +70,7 @@ class HeaderComponent extends Component {
                 <Avatar>GV</Avatar>
               </span>
             </div>
+            
             <div className="ant-list-item-meta-content">
               <h4
                 className="ant-list-item-meta-title"
@@ -82,6 +95,9 @@ class HeaderComponent extends Component {
 
     return (
       <Header style={{ position: "fixed", zIndex: 1024, width: "100%" }}>
+
+      <Row>
+        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
         <Dropdown overlay={menuUser} trigger={["click"]}>
           <Button
             type="primary"
@@ -92,8 +108,10 @@ class HeaderComponent extends Component {
         </Dropdown>
 
 
-        <div style={{ float: "right" }}>
-          <Radio.Group
+      <SelectInstituicao />
+        </Col>
+        <Col xs={24} sm={24} md={16} lg={16} xl={16} style={{ textAlign: "right" }}>
+        <Radio.Group
             value={this.props.filters.shortDate}
             onChange={this.changeShortDate}
             style={{ marginRight: "5px" }}
@@ -112,7 +130,10 @@ class HeaderComponent extends Component {
             format="DD/MM/YYYY"
             onChange={this.props.setdate}
           />
-        </div>
+        </Col>
+      </Row>
+
+        
       </Header>
     );
   }

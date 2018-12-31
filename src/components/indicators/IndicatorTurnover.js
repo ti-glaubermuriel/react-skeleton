@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Card, Spin, Button
+    Card, Spin, Button, Tooltip
 } from "antd";
 import api from "../../services/api";
 import {ConvertSecondsToHourMinute} from "../../Utils";
@@ -69,10 +69,11 @@ class IndicatorTurnover extends Component {
             <div>
                 <Card className="card-indicator">
                     <div className="card-details">
-                        <Button shape="circle" icon="search" className="btn-card-details" />
+                        <Tooltip placement="topLeft" title="Visualizar detalhes">
+                            <Button shape="circle" icon="search" className="btn-card-details" />
+                        </Tooltip>
                     </div>
                     <div className="card-number">
-
                         <span>
                             <Spin className="ant-spin-lg" spinning={this.state.loading}>
                                 {this.state.value}
@@ -82,6 +83,11 @@ class IndicatorTurnover extends Component {
                     <div className="card-sub-title">
                     Média do Turnover de Salas
                         </div>
+                        <div className="card-info">
+                        <Tooltip placement="topLeft" title="Tunorver é o tempo médio em que cada sala fica ociosa na instituição.">
+                        <Button shape="circle" icon="info" className="btn-card-details" />
+                        </Tooltip>
+                    </div>
                 </Card>
             </div>
         );

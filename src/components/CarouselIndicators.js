@@ -23,6 +23,7 @@ import IndicatorPacientes from "./indicators/IndicatorPacientes";
 import IndicatorConvenios from "./indicators/IndicatorConvenios";
 import IndicatorAdverseEvents from "./indicators/IndicatorAdverseEvents";
 import IndicatorTurnover from "./indicators/IndicatorTurnover";
+import IndicatorSRPA from "./indicators/IndicatorSRPA";
 
 
 
@@ -103,33 +104,10 @@ class CarouselIndicators extends Component {
 
           <div>
             <div style={{ padding: "0px 15px 10px" }}>
-              <Card className="card-indicator">
-                <div className="card-number">
-                  <h2>
-                    13 <small>%</small>
-                  </h2>
-                </div>
-                <div className="card-sub-title">
-                  Salas em atividade
-                          </div>
-              </Card>
+              <IndicatorSRPA filters={this.props.filters} />
             </div>
           </div>
 
-          <div>
-            <div style={{ padding: "0px 15px 10px" }}>
-              <Card className="card-indicator">
-                <div className="card-number">
-                  <h2>
-                    2 <small>hr</small>
-                  </h2>
-                </div>
-                <div className="card-sub-title">
-                  Tempo médio em SRPA
-                          </div>
-              </Card>
-            </div>
-          </div>
         </Slider>
 
       </div>

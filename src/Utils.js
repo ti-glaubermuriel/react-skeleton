@@ -40,6 +40,22 @@ export const DateDiff = arrayPeriod => {
   }
 }
 
+
+// Convert periods in format database 'YYYY-MM-DD'
+export const ConvertSecondsToHourMinute = seconds => {
+  try {
+
+    let time = (seconds) ? moment().startOf('day').seconds(seconds).format('HH:mm') : '00:00';
+
+    return time;
+
+  } catch (error) {
+    return '?';
+  }
+}
+
+
+
 // Convert name in Letter Avatar 
 export const LetterAvatar = str => {
   try {

@@ -84,7 +84,7 @@ const options = {
     }
   };
 
-class chartTopPharma extends Component {
+class ChartTopPharma extends Component {
     render() {
         return (
             <div>
@@ -111,4 +111,4 @@ class chartTopPharma extends Component {
     }
 }
 
-export default chartTopPharma;
+export default ChartTopPharma;

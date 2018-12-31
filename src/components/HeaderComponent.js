@@ -41,6 +41,8 @@ class HeaderComponent extends Component {
   componentDidMount() {
     console.log("LOAD HEADER");
     console.log(this.props.filters);
+
+    
   }
 
   render() {

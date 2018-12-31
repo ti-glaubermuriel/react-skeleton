@@ -9,6 +9,7 @@ import ChartHourProcedure from "../components/ChartHourProcedure";
 import ChartHourInterval from "../components/ChartHourInterval";
 import CarouselIndicators from "../components/CarouselIndicators";
 
+
 class HomePage extends Component {
   componentDidMount() {
     console.log("LOAD HOME");
@@ -23,7 +24,7 @@ class HomePage extends Component {
         </h1>
         <Row>
           <Col span={24} style={{ padding: "15px 50px 50px" }}>
-            <CarouselIndicators/>
+            <CarouselIndicators filters={this.props.filters}/>
           </Col>
         </Row>
         <Row gutter={16}>

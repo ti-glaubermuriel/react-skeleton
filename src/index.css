@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800');
+
+.logo{
+  font-family: 'Muli', sans-serif;
+  font-size: 30px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -92,19 +99,72 @@ border: 1px solid #e8e8e8;
   color: #858EA9 !important
 }
 
-.ant-menu-vertical .ant-menu-item:after, .ant-menu-vertical-left .ant-menu-item:after, .ant-menu-vertical-right .ant-menu-item:after, .ant-menu-inline .ant-menu-item:after {
-  border-right: 3px solid #1BBFBB !important;
+.ant-menu-vertical .ant-menu-item:after, .ant-menu-vertical-left .ant-menu-item:after, .ant-menu-vertical-right .ant-menu-item:after, .ant-menu-inline .ant-menu-item:after{
+  left: 0 !important;
+  border-left: 8px solid #1bbfbb !important;
+  border-right: none !important;
+}
+
+.ant-menu-item > a {
+  font-size: 17px !important;
+  letter-spacing: 0.5px !important;
+  font-weight: 400;
+  color: #7c8595 !important
+}
+
+.ant-menu-item-selected > a, .ant-menu-item-selected > a:hover{
+  color: #343f5c !important;
+  font-weight: 600;
 }
 
 .ant-menu-item:hover, .ant-menu-item-active, .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-submenu-active, .ant-menu-submenu-title:hover{
   color: #1BBFBB !important;
 }
 
-.ant-menu-item-selected{
-  color: #343F5C !important;
-  font-weight: 500;
+.menu-indicator{
+  margin-left: 24px;
+    padding-bottom: 10px;
+    font-size: 20px !important;
+    letter-spacing: 0.5px !important;
+    font-weight: 700;
+    color: #343f5c !important;
 }
 
+.menu-indicator button{
+  float: right;
+  margin-right: 8px;
+  margin-top: 8px;
+  border: none !important;
+  font-size: 20px !important;
+  color: #7c8595 !important
+}
+
+.menu-indicator button:hover{
+  color: #343f5c !important
+}
+
+/* DATA PICKER */
+
+.ant-calendar-selected-date .ant-calendar-date, .ant-calendar-selected-start-date .ant-calendar-date, .ant-calendar-selected-end-date .ant-calendar-date{
+  background: #1BBFBB !important;
+}
+
+/* RADIO BUTTOM*/
+
+
+.ant-radio-button-wrapper-checked{
+  color: #1BBFBB !important;
+  border-color: #1BBFBB !important;
+  box-shadow: -1px 0 0 0 #1BBFBB !important;
+}
+
+.ant-radio-button-wrapper-checked:first-child{
+  border-color: #1BBFBB;
+}
+
+.ant-radio-button-wrapper:hover{
+  color: #1BBFBB !important;
+}
 
 /* SPIN*/
 
@@ -252,12 +312,48 @@ border-radius: 15px !important;
   text-align: center;
 }
 
+/* CARD */
 
+.ant-card{
+  border-radius: 8px !important;
+  box-shadow: 0 4px 14px 1px rgba(0, 0, 0, 0.04) !important;
+}
+.ant-card-head{
+  border-bottom: none;
+}
+.ant-card-head-title{
+  font-size: 17px !important;
+  letter-spacing: 0.5px !important;
+  color: #343f5c !important;
+  font-weight: 600 !important;
+}
+
+.ant-card-body{
+  padding: 20px 24px;
+}
+
+.ant-card-bordered{
+  border: none !important
+}
 
 ::selection {
   background: #1BBFBB !important;
 }
 
+
+.container-logo{
+  width: 180px !important;
+  display: inline-block !important;
+  box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.04) !important;
+  margin-right: 10px;
+}
+
+.container-menu-user{
+  display: inline-block !important;
+  box-shadow: -3px 0px 14px 0px rgba(0, 0, 0, 0.04) !important;
+  margin-left: 10px;
+  padding-left: 15px;
+}
 
 
 .ant-modal-body{

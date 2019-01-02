@@ -20,7 +20,7 @@ class HomePage extends Component {
     return (
       <div>
         <h1 className="title">
-          <Icon type="line-chart" /> Visão geral
+          Visão geral
         </h1>
         <Row>
           <Col span={24} style={{ padding: "15px 50px 50px" }}>

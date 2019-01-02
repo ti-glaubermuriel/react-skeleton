@@ -22,22 +22,7 @@ class MenuComponent extends Component {
             padding: "70px 0 0 0"
           }}
         >
-          <Row
-            style={{
-              marginLeft: "24px",
-              fontSize: "16px",
-              paddingBottom: "10px"
-            }}
-          >
-            <b style={{ verticalAlign: "-webkit-baseline-middle" }}>
-              Indicadores
-            </b>
-            <Button
-              style={{ float: "right", marginRight: "8px" }}
-              shape="circle"
-              icon="setting"
-            />
-          </Row>
+         
 
           <Menu
             mode="inline"
@@ -48,7 +33,6 @@ class MenuComponent extends Component {
             <Menu.Item key="1">
               <Link to="/app/home">
                 {" "}
-                <Icon type="line-chart" />
                 <span>Visão geral</span>{" "}
               </Link>
             </Menu.Item>
@@ -56,15 +40,24 @@ class MenuComponent extends Component {
             <Menu.Item key="2">
               <Link to="/app/pharma">
                 {" "}
-                <Icon type="medicine-box" />
                 <span>Fármacos</span>{" "}
               </Link>
             </Menu.Item>
 
             <Menu.Item key="3">
-              <Icon type="clock-circle" />
-              <span>Tempo cirúrgico</span>
+              <Link to="/app/gases">
+                {" "}
+                <span>Gases</span>{" "}
+              </Link>
             </Menu.Item>
+
+            <Menu.Item key="4">
+              <Link to="/app/surgery">
+                {" "}
+                <span>Tempo cirúrgico</span>{" "}
+              </Link>
+            </Menu.Item>
+
           </Menu>
         </Sider>
     );

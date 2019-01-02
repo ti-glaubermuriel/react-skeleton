@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { logout } from "../services/auth";
 import {
   Layout,
   Menu,
@@ -17,7 +19,7 @@ import {
 import moment from "moment";
 import "moment/locale/pt-br";
 import locale from "antd/lib/date-picker/locale/pt_BR";
-import iconColor from "../assets/icon_color.png";
+import iconHeader from "../assets/logo-header.png";
 
 const { Header } = Layout;
 const Option = Select.Option;
@@ -53,9 +55,16 @@ class HeaderComponent extends Component {
   componentDidMount() {
     console.log("LOAD HEADER");
     console.log(this.props.filters);
+  };
 
-    
-  }
+  locationHome = e => {
+    window.location = window.location.origin + '/app/home';
+  };
+
+  HandleLogout = e => {
+    logout();
+  };
+  
 
   render() {
     const menuUser = (
@@ -86,7 +95,7 @@ class HeaderComponent extends Component {
         </Menu.Item>
         <Divider style={{ margin: "5px 0" }} />
         <Menu.Item>
-          <a rel="noopener noreferrer" href="" style={{ color: "red" }}>
+          <a onClick={this.HandleLogout} rel="noopener noreferrer" href="" style={{ color: "red" }}>
             Encerrar sessão
           </a>
         </Menu.Item>
@@ -97,20 +106,16 @@ class HeaderComponent extends Component {
       <Header style={{ position: "fixed", zIndex: 1024, width: "100%" }}>
 
       <Row>
-        <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-        <Dropdown overlay={menuUser} trigger={["click"]}>
-          <Button
-            type="primary"
-            shape="circle"
-            icon="user"
-            className="btn-custom-primary"
-          />
-        </Dropdown>
-
+        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+        
+        <div className="container-logo" >
+          <a onClick={this.locationHome}><img src={iconHeader} alt="Logo" /> </a> 
+        </div>
+        
 
       <SelectInstituicao />
         </Col>
-        <Col xs={24} sm={24} md={16} lg={16} xl={16} style={{ textAlign: "right" }}>
+        <Col xs={24} sm={24} md={12} lg={12} xl={12} style={{ textAlign: "right" }}>
         <Radio.Group
             value={this.props.filters.shortDate}
             onChange={this.changeShortDate}
@@ -130,6 +135,18 @@ class HeaderComponent extends Component {
             format="DD/MM/YYYY"
             onChange={this.props.setdate}
           />
+
+        <div className="container-menu-user">
+        
+        <Dropdown overlay={menuUser} trigger={["click"]}>
+          <Button
+            type="primary"
+            shape="circle"
+            icon="user"
+            className="btn-custom-primary" 
+          />
+        </Dropdown>
+        </div>
         </Col>
       </Row>
 

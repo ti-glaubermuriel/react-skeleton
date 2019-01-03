@@ -22,33 +22,35 @@ class HomePage extends Component {
         <h1 className="title">
           Visão geral
         </h1>
+
         <Row>
           <Col span={24} style={{ padding: "15px 50px 50px" }}>
-            <CarouselIndicators filters={this.props.filters}/>
+            <CarouselIndicators lastfilter={this.props.lastfilter}/>
           </Col>
         </Row>
+ 
         <Row gutter={16}>
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-            <ListAnaesthetists filters={this.props.filters} />
+            <ListAnaesthetists lastfilter={this.props.lastfilter} />
           </Col>
           <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-          <ChartAnestheticsInterval filters={this.props.filters} />
+          <ChartAnestheticsInterval lastfilter={this.props.lastfilter} />
           </Col>
         </Row>
         <Row gutter={16} className="rowContainer">
         <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-            <ChartTopPharma filters={this.props.filters} />
+            <ChartTopPharma lastfilter={this.props.lastfilter} />
           </Col>
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-            <ChartTopGases filters={this.props.filters} />
+            <ChartTopGases lastfilter={this.props.lastfilter} />
           </Col>
         </Row>
         <Row gutter={16} className="rowContainer">
           <Col xs={24} sm={24} md={16} lg={16} xl={16}>
-            <ChartHourProcedure filters={this.props.filters} />
+            <ChartHourProcedure lastfilter={this.props.lastfilter} />
           </Col>
           <Col xs={24} sm={24} md={8} lg={8} xl={8}>
-            <ChartHourInterval filters={this.props.filters} />
+            <ChartHourInterval lastfilter={this.props.lastfilter} />
           </Col>
         </Row>
       </div>

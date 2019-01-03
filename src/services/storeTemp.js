@@ -15,3 +15,4 @@ export const loadDataAnesthetics = () => {
       return arrayData;
 
   };
+

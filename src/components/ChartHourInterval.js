@@ -3,6 +3,7 @@ import { Button, Card, Spin, Select } from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import api from "../services/api";
+import {getRequestFilters} from "../services/filters";
 
 
 const Option = Select.Option;
@@ -18,27 +19,10 @@ class ChartHourInterval extends Component {
     loadData = () => {
         
         this.setState({'loading': true});
-        
-        const obj = {
-          institution: {
-            id: 348,
-            active: true,
-            uuid: "2BD499B3-81C6-4F2F-ACFB-BC8696946FBB"
-          },
-          period: ["2018-12-01", "2018-12-14"],
-          user: {
-            id: 1,
-            uuid: "e500ffc7-1a51-4e8d-a72b-ed709a0cd7e5",
-            email: "admin@anestech.com.br",
-            active: true,
-            type: "AD",
-            anaesthetist_id: null,
-            anaesthetist: null
-          }
-        };
+        let objFilters = getRequestFilters();
 
         api
-          .post("dashboard/total/procedure_start/", obj)
+          .post("dashboard/total/procedure_start/", objFilters)
           .then(res => {
             
 
@@ -67,17 +51,23 @@ class ChartHourInterval extends Component {
 
 
       componentWillReceiveProps(nextProps) {
-        if(this.props.filters.period !== nextProps.filters.period){
-          console.log("UPDATE FILTERS COMP LIST")
-          this.loadData();
-        }
-      };
-    
-      componentDidMount() {
-        console.log("LOAD COMP LIST");
-        this.loadData();
-      };
+        console.log('HOUR INTERVAL');
 
+        console.log(nextProps);
+
+        if (this.props.lastfilter !== nextProps.lastfilter) {
+            this.loadData();
+        }
+    };
+ 
+
+    componentDidMount() {
+
+        if (this.props.lastfilter) {
+            this.loadData();
+        }  
+
+    };
 
     render() {
 

@@ -3,12 +3,6 @@ import { Layout, Icon } from "antd";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { getProfile } from "./services/auth";
 import { PrivateRoute } from "./Routes";
-import { PeriodSubtractMonth } from "./Utils";
-import api from "./services/api";
-
-import posed, { PoseGroup } from 'react-pose';
-
-
 import "./App.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -30,49 +24,29 @@ class App extends Component {
     super();
 
     this.state = {
-      shortDate: "1", //number month
-      institutions: [],
-      period: PeriodSubtractMonth(1),
-      user: getProfile()
+      lastfilter: null
     };
   }
 
-  loadInstitutions = () => {
-    api
-      .get("/web/institutions/")
-      .then(res => {
-        this.setState({institutions: res.data});
-      })
-      .catch(error => {
-        return [];
-        console.log(error);
-      });
-  };
-
-  // set state filter period - component -> ant design
-  UpdatePeriod = (value, dateSelected) => {
-    if (Array.isArray(value)) {
-      this.setState({ period: dateSelected, shortDate: "0" });
-    } else {
-      this.setState({ period: PeriodSubtractMonth(value), shortDate: value });
-    }
-  };
-
   // set state institution - component -> ant design
-  UpdateInstitution = id => {
-    this.setState({ institution_id: id });
+  UpdateStateFilters = timestamp => {
+
+    this.setState({lastfilter: timestamp});
+
+    console.log('########### - ALTERADO FILTER ###########');
+    console.log(timestamp);
+    
   };
 
   componentDidMount() {
-    console.log("LOAD APP");
-    console.log(PeriodSubtractMonth(1));
+    console.log("INIT APP");
   }
 
   render() {
     return (
       <BrowserRouter>
         <Layout style={{ minHeight: "100vh", padding: 0 }}>
-          <HeaderComponent setdate={this.UpdatePeriod} filters={this.state} />
+          <HeaderComponent setglobalstate={this.UpdateStateFilters} />
           <MenuComponent />
           <Layout>
             <Content style={{ padding: "80px 20px 20px 220px" }}>
@@ -81,17 +55,17 @@ class App extends Component {
                   exact
                   path="/app"
                   component={HomePage}
-                  filters={this.state}
+                  lastfilter={this.state.lastfilter}
                 />
                 <PrivateRoute
                   path="/app/home"
                   component={HomePage}
-                  filters={this.state}
+                  lastfilter={this.state.lastfilter}
                 />
                 <PrivateRoute
                   path="/app/pharma"
                   component={PharmaPage}
-                  filters={this.state}
+                  lastfilter={this.state.lastfilter}
                 />
                 <Route component={NotFoundPage} />
               </Switch>

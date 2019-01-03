@@ -21,13 +21,19 @@ class IndicatorPacientes extends Component {
     };
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.filters.period !== nextProps.filters.period) {
+
+        if (this.props.lastfilter !== nextProps.lastfilter) {
             this.loadData();
         }
     };
+ 
 
     componentDidMount() {
-        this.loadData();
+
+        if (this.props.lastfilter) {
+            this.loadData();
+        }  
+
     };
 
     render() {

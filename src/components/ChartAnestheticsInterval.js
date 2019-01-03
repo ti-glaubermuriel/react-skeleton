@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Card, Icon} from "antd";
+import { Button, Card, Icon, Spin} from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
@@ -36,7 +36,49 @@ Highcharts.setOptions({
 
   });
   
-const options = {
+
+
+
+class ChartAnestheticsInterval extends Component {
+  state = {
+    loading: true,
+    categories: [],
+    series: [{
+        data: []
+      }]
+  }
+
+
+  loadData = () => {
+
+        this.setState({loading: true});
+
+        setTimeout(() => {
+            this.setState({loading: false});
+        }, 500);
+
+    };
+
+
+  componentWillReceiveProps(nextProps) {
+
+    if (this.props.lastfilter !== nextProps.lastfilter) {
+        this.loadData();
+    }
+    };
+
+
+    componentDidMount() {
+
+        if (this.props.lastfilter) {
+            this.loadData();
+        }  
+
+    };
+
+    render() {
+
+      let  options = {
         credits: { enabled: false },
         chart: {
           zoomType: 'x',
@@ -80,9 +122,6 @@ const options = {
         }]
       };
 
-
-class ChartAnestheticsInterval extends Component {
-    render() {
         return (
             <div >
                 <Card
@@ -90,11 +129,12 @@ class ChartAnestheticsInterval extends Component {
                     title="Procedimentos no período"
                     extra={<small> Selecione período para zoom <Icon type="zoom-in" /></small>}
                   >
+                  <Spin className="ant-spin-lg" spinning={this.state.loading}>
                     <HighchartsReact
                       highcharts={Highcharts}
                       options={options}
                     />
-                     
+                     </Spin>
                   </Card>
             </div>
         );

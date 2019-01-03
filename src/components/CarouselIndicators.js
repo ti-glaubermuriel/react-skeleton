@@ -78,25 +78,25 @@ class CarouselIndicators extends Component {
         <Slider {...settingsCorousel}>
           <div>
             <div style={{ padding: "0px 15px 10px" }}>
-              <IndicatorPacientes filters={this.props.filters} />
+              <IndicatorPacientes lastfilter={this.props.lastfilter} />
             </div>
           </div>
 
           <div>
             <div style={{ padding: "0px 15px 10px" }}>
-              <IndicatorConvenios filters={this.props.filters} />
+              <IndicatorConvenios lastfilter={this.props.lastfilter} />
             </div>
           </div>
 
           <div>
             <div style={{ padding: "0px 15px 10px" }}>
-            <IndicatorAdverseEvents filters={this.props.filters} />
+            <IndicatorAdverseEvents lastfilter={this.props.lastfilter} />
             </div>
           </div>
 
           <div>
             <div style={{ padding: "0px 15px 10px" }}>
-             <IndicatorTurnover filters={this.props.filters} />
+             <IndicatorTurnover lastfilter={this.props.lastfilter} />
             </div>
           </div>
 

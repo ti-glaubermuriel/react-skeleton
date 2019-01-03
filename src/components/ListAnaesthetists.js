@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Card, Row, Col, List, Avatar, Skeleton, Modal } from "antd";
 import api from "../services/api";
 import { LetterAvatar, FormatPeriodDB } from "../Utils";
+import {getRequestFilters} from "../services/filters";
 
 
 class ListAnaesthetists extends Component {
@@ -29,27 +30,10 @@ class ListAnaesthetists extends Component {
     console.log('## load data ##');
 
     this.setState({'initLoading': true});
-    
-    const obj = {
-      institution: {
-        id: 348,
-        active: true,
-        uuid: "2BD499B3-81C6-4F2F-ACFB-BC8696946FBB"
-      },
-      period: ["2018-12-14", "2018-12-14"],
-      user: {
-        id: 1,
-        uuid: "e500ffc7-1a51-4e8d-a72b-ed709a0cd7e5",
-        email: "admin@anestech.com.br",
-        active: true,
-        type: "AD",
-        anaesthetist_id: null,
-        anaesthetist: null
-      }
-    };
+    let objFilters = getRequestFilters();
 
     api
-      .post("/dashboard/total/anaesthetists/", obj)
+      .post("/dashboard/total/anaesthetists/", objFilters)
       .then(res => {
         
         //setTimeout(() => this.setState({initLoading: false,listAnesthetists: res.data.slice(0, 5), listAllAnesthetists: res.data}), 3000);
@@ -69,16 +53,20 @@ class ListAnaesthetists extends Component {
 
 
   componentWillReceiveProps(nextProps) {
-    if(this.props.filters.period !== nextProps.filters.period){
-      console.log("UPDATE FILTERS COMP LIST")
-      this.loadData();
-    }
-  };
 
-  componentDidMount() {
-    console.log("LOAD COMP LIST");
-    this.loadData();
-  }
+        if (this.props.lastfilter !== nextProps.lastfilter) {
+            this.loadData();
+        }
+    };
+
+
+    componentDidMount() {
+
+        if (this.props.lastfilter) {
+            this.loadData();
+        }  
+
+    };
 
   render() {
     const { initLoading, listAnesthetists } = this.state;

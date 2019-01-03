@@ -3,9 +3,11 @@ import {
     Card, Spin, Button
 } from "antd";
 import api from "../../services/api";
+import {getRequestFilters} from "../../services/filters";
+
+
 
 class IndicatorConvenios extends Component {
-
     state = {
         loading: true,
         value: null,
@@ -15,51 +17,36 @@ class IndicatorConvenios extends Component {
     loadData = () => {
 
         this.setState({ 'loading': true, value: null, listConvenios: null });
-
-        const obj = {
-            institution: {
-                id: 348,
-                active: true,
-                uuid: "2BD499B3-81C6-4F2F-ACFB-BC8696946FBB"
-            },
-            period: ["2018-12-01", "2018-12-14"],
-            user: {
-                id: 1,
-                uuid: "e500ffc7-1a51-4e8d-a72b-ed709a0cd7e5",
-                email: "admin@anestech.com.br",
-                active: true,
-                type: "AD",
-                anaesthetist_id: null,
-                anaesthetist: null
-            }
-        };
+        let objFilters = getRequestFilters();
 
         api
-            .post("dashboard/medical_plans/", obj)
+            .post("dashboard/medical_plans/", objFilters)
             .then(res => {
-
                 this.setState({
                     loading: false,
-                    value: res.data.total
+                    value: res.data.total.toString()
                 });
-
-
             })
             .catch(error => {
                 console.log(error);
             });
 
-
     };
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.filters.period !== nextProps.filters.period) {
+
+        if (this.props.lastfilter !== nextProps.lastfilter) {
             this.loadData();
         }
     };
+ 
 
     componentDidMount() {
-        this.loadData();
+
+        if (this.props.lastfilter) {
+            this.loadData();
+        }  
+
     };
 
     render() {

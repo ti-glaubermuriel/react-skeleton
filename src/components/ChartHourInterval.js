@@ -89,8 +89,17 @@ class ChartHourInterval extends Component {
               text: ''
             },
             tooltip: {
-              pointFormat: ' {point.percentage:.0f}% - {point.y} Cirurgia(s)'
-            },
+                pointFormat: ' {point.percentage:.0f}% - {point.y} Cirurgia(s)',
+                backgroundColor: "rgba(0, 0, 0, 0.70)",
+                borderWidth: 0,
+                borderRadius: 5,
+                shadow: false,
+                useHTML: true,
+                style: {
+                  padding: 0,
+                  color: "white"
+                }
+              },
             legend: {
               layout: 'vertical',
               align: 'left',
@@ -105,7 +114,7 @@ class ChartHourInterval extends Component {
                         enabled: false
                     },
                     showInLegend: true,
-                    size:'80%',
+                    size:'70%',
                 }
             },
             series:  this.state.series
@@ -115,16 +124,16 @@ class ChartHourInterval extends Component {
             <div>
                 <Card
                     style={{ minHeight: 445, width: "100%" }}
-                    title="Cirurgias iniciadas entre"
-                    extra={<Select defaultValue="lucy">
-                    <Option value="jack">07:30 às 08:30</Option>
-                    <Option value="jack">07:30 às 08:30</Option>
-                    <Option value="lucy">08:30 às 09:30</Option>
-                    <Option value="jack">07:30 às 08:30</Option>
-                    <Option value="jack">07:30 às 08:30</Option>
-                    <Option value="jack">07:30 às 08:30</Option>
-                    <Option value="jack">07:30 às 08:30</Option>
-                    <Option value="jack">07:30 às 08:30</Option>
+                    title="Cirurgias entre"
+                    extra={<Select defaultValue="2">
+                    <Option value="1">06:00 às 07:00</Option>
+                    <Option value="2">07:30 às 08:30</Option>    
+                    <Option value="3">09:00 às 11:00</Option>
+                    <Option value="4">13:00 às 15:00</Option>
+                    <Option value="5">16:30 às 18:00</Option>
+                    <Option value="6">18:00 às 20:00</Option>
+                    <Option value="7">20:30 às 22:00</Option>
+                    <Option value="8">22:30 às 00:00</Option>
                   </Select>}
                   >
                   <Spin className="ant-spin-lg" spinning={this.state.loading}>

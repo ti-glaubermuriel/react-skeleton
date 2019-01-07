@@ -25,8 +25,10 @@ api.interceptors.response.use(
     return response;
   },
   error => {
-    if (error.response.status === 401) {
+    if (error.response.status === 401 && error.response.config.url !== 'https://axreg-server.anestech.com.br/web/login') {
         logout();
+        console.log(error.response);
+        
         console.log('Redirect Login');
     }
     return error;

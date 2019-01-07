@@ -67,7 +67,7 @@ class CarouselIndicators extends Component {
           }
         }
       ],
-      autoplay: false,
+      autoplay: true,
       autoplaySpeed: 5000
     };
 
@@ -104,7 +104,7 @@ class CarouselIndicators extends Component {
 
           <div>
             <div style={{ padding: "0px 15px 10px" }}>
-              <IndicatorSRPA filters={this.props.filters} />
+              <IndicatorSRPA lastfilter={this.props.lastfilter} />
             </div>
           </div>
 

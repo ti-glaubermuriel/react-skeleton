@@ -8,18 +8,28 @@ import {
   Row,
   Col,
   Card,
-  message
+  message,
+  Tooltip,
+  Divider,
+  Tag
 } from "antd";
 
 import api from "../services/api";
 import { Link, withRouter } from "react-router-dom";
 import { login } from "../services/auth";
 import iconColor from "../assets/icon_color.png";
+import iconHeader from "../assets/logo-icon.png";
 
 const { Content, Footer } = Layout;
 const FormItem = Form.Item;
 
 class LoginPage extends Component {
+
+  state = {
+    loading: false,
+  }
+
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -28,17 +38,22 @@ class LoginPage extends Component {
 
         // request login
         try {
+
+          this.setState({loading: true});
+          
           api
             .post("/web/login", values)
             .then(res => {
               login(res.headers.authorization, res.data);
               this.props.history.push("/app");
+              this.setState({loading: false});
             })
             .catch(error => {
               console.log(error);
               message.error(
                 "Usuário não autorizado, verifique suas credenciais."
               );
+              this.setState({loading: false});
             });
 
           //this.props.history.push("/app");
@@ -55,18 +70,15 @@ class LoginPage extends Component {
       <div>
         <Layout className="layout" style={{ minHeight: "100vh", padding: 0 }}>
           <Content style={{ padding: "0 10px" }}>
-            <Row>
-              <Col xs={2} sm={4} md={6} lg={8} xl={10} />
-              <Col
-                xs={20}
-                sm={16}
-                md={12}
-                lg={8}
-                xl={4}
-                style={{ paddingTop: "100px" }}
+            <Row type="flex" justify="space-around" align="middle">
+              <Col xs={2} sm={4} md={6} lg={8} xl={8} />
+              <Col xs={20} sm={16} md={12} lg={8} xl={8}
+                style={{ paddingTop: "50px" }} 
               >
-                <div style={{ padding: "30px" }}>
-                  <Card title="Login" bordered={false} style={{ width: 300 }}>
+                <div style={{ padding: "30px" }} className="login-form">
+                  <Card title={<div style={{textAlign: 'center'}} className="logo"><img src={iconHeader} alt="Logo" />AxReg <Divider type="vertical" /><span className="logo-sub-title">Dashboard </span> <Divider>Login</Divider></div> } bordered={false} style={{ width: '100%' }}
+                  
+                  >
                     <Form onSubmit={this.handleSubmit} className="login-form">
                       <FormItem>
                         {getFieldDecorator("email", {
@@ -80,7 +92,7 @@ class LoginPage extends Component {
                           <Input
                             prefix={
                               <Icon
-                                type="user"
+                                type="mail"
                                 style={{ color: "rgba(0,0,0,.25)" }}
                               />
                             }
@@ -114,24 +126,36 @@ class LoginPage extends Component {
                         <Button
                           block
                           type="primary"
+                          loading={this.state.loading}
                           htmlType="submit"
-                          className="login-form-button"
+                          className="btn-custom-primary"
                           style={{ float: "rigth" }}
                         >
-                          Login
+                          Entrar
                         </Button>
+                          
+                          <div  style={{float: 'right'}}>
+                        <Button type="dashed" size="small"><Icon type="unlock" /> Recuperar senha</Button>
+                        </div>
+
                       </FormItem>
                     </Form>
                   </Card>
+
+                   
                 </div>
               </Col>
-              <Col xs={2} sm={4} md={6} lg={8} xl={10} />
+              <Col xs={2} sm={4} md={6} lg={8} xl={8} />
             </Row>
           </Content>
           <Footer
-            style={{ position: "sticky", bottom: "0", textAlign: "center" }}
+            style={{ position: "relative", bottom: "0", textAlign: "center" }}
           >
-            Powered by <img src={iconColor} alt="Logo" />
+            Powered by 
+            
+            <Tooltip title="Anestech"> <a href="http://www.anestech.com.br/" target="_blank">
+                <img src={iconColor} alt="Logo" /> </a>
+            </Tooltip>
           </Footer>
         </Layout>
       </div>

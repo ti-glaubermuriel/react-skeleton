@@ -46,10 +46,6 @@ class ChartHourProcedure extends Component {
       };
 
       componentWillReceiveProps(nextProps) {
-        console.log('CHAMAAAAAAAA');
-
-        console.log(nextProps);
-
         if (this.props.lastfilter !== nextProps.lastfilter) {
             this.loadData();
         }
@@ -101,7 +97,18 @@ class ChartHourProcedure extends Component {
               enabled: false
             },
         
-            series: this.state.series
+            series: this.state.series,
+            tooltip: {
+                backgroundColor: "rgba(0, 0, 0, 0.70)",
+                borderWidth: 0,
+                borderRadius: 5,
+                shadow: false,
+                useHTML: true,
+                style: {
+                  padding: 0,
+                  color: "white"
+                }
+              }
           }
 
         return (

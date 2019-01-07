@@ -21,6 +21,7 @@ import iconHeader from "../assets/logo-header.png";
 import { PeriodSubtractMonth, FormatPeriodDB } from "../Utils";
 import api from "../services/api";
 import { getFilters, setFilters } from "../services/filters";
+import {getProfile} from "../services/auth";
 
 const { Header } = Layout;
 const Option = Select.Option;
@@ -53,7 +54,8 @@ class HeaderComponent extends Component {
     listInstitutions: [],
     shortDate: "", //number month
     institution: null,
-    period: []
+    period: [],
+    user: getProfile()
   };
 
   
@@ -169,21 +171,13 @@ class HeaderComponent extends Component {
       <Menu mode="inline" style={{ width: 250 }}>
         <Menu.Item>
           <div className="ant-list-item-meta">
-            <div className="ant-list-item-meta-avatar">
-              <span
-                className="ant-avatar ant-avatar-circle ant-avatar-image"
-                style={{ marginTop: 5 }}
-              >
-                <Avatar>GV</Avatar>
-              </span>
-            </div>
-            
+   
             <div className="ant-list-item-meta-content">
               <h4
                 className="ant-list-item-meta-title"
                 style={{ marginBottom: -5 }}
               >
-                George Vitoriano
+                {this.state.user.email} 
               </h4>
               <div className="ant-list-item-meta-description">
                 <small>Administrador</small>

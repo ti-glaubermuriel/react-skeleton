@@ -119,7 +119,18 @@ class ChartAnestheticsInterval extends Component {
           name: 'Procedimentos',
           color: '#1bbfbb',
           data: arrayData
-        }]
+        }],
+        tooltip: {
+          backgroundColor: "rgba(0, 0, 0, 0.70)",
+          borderWidth: 0,
+          borderRadius: 5,
+          shadow: false,
+          useHTML: true,
+          style: {
+            padding: 0,
+            color: "white"
+          }
+        }
       };
 
         return (

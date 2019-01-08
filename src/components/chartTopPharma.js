@@ -225,12 +225,12 @@ class ChartTopPharma extends Component {
           </Spin>
 
            <Modal
-          title="Top Anestesistas"
+          title="Top Fármacos"
           zIndex="565565"
           visible={this.state.modalVisible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
-          style={{ minWidth: '800px' }}
+          style={{ minWidth: '800px'}}
           footer={[
             <Button type="primary" onClick={this.handleOk}>
               OK

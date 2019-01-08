@@ -71,8 +71,8 @@ class LoginPage extends Component {
         <Layout className="layout" style={{ minHeight: "100vh", padding: 0 }}>
           <Content style={{ padding: "0 10px" }}>
             <Row type="flex" justify="space-around" align="middle">
-              <Col xs={2} sm={4} md={6} lg={8} xl={8} />
-              <Col xs={20} sm={16} md={12} lg={8} xl={8}
+              <Col xs={2} sm={4} md={6} lg={8} xl={7} />
+              <Col xs={20} sm={16} md={12} lg={8} xl={6}
                 style={{ paddingTop: "50px" }} 
               >
                 <div style={{ padding: "30px" }} className="login-form">
@@ -145,7 +145,7 @@ class LoginPage extends Component {
                    
                 </div>
               </Col>
-              <Col xs={2} sm={4} md={6} lg={8} xl={8} />
+              <Col xs={2} sm={4} md={6} lg={8} xl={7} />
             </Row>
           </Content>
           <Footer

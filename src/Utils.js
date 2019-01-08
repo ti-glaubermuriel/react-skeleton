@@ -84,3 +84,29 @@ export const LetterAvatar = str => {
     return '?';
   }
 };
+
+
+// Get random exdecimal array colors
+export const getRandomColor = str => {
+  try {
+
+    let arrayColors = [
+      "#F07396",
+      "#FF9F40",
+      "#FFCD56",
+      "#4BBFBF",
+      "#36A2EB",
+      "#9966FF",
+      "#C9CBCF",
+      "#62D171",
+      "#E270EF",
+      "#E35C5C"
+    ];
+
+    return arrayColors[Math.floor(Math.random() * arrayColors.length)];
+
+
+  } catch (error) {
+    return '?';
+  }
+}

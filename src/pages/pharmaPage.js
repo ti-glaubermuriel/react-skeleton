@@ -13,7 +13,9 @@ class PharmaPage extends Component {
         
         return (
             <div>
-                <p>FARMACOS PAGE -> {this.props.teste} </p>
+                <h1 className="title">
+          Fármacos
+        </h1>
             </div>
         );
     }

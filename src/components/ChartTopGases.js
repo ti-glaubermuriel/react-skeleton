@@ -6,7 +6,6 @@ import api from "../services/api";
 import { getRequestFilters } from "../services/filters";
 
 
-
 class ChartTopGases extends Component {
 
   state = {

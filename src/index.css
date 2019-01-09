@@ -267,10 +267,28 @@ color: #1bbfbb !important
 }
 
 .ant-btn-dashed:hover, .ant-btn-dashed:focus{
-  color: #1BBFBB;
-    background-color: #fff;
-    border-color: #1BBFBB;
+  color: #1BBFBB !important;
+    background-color: #fff !important;
+    border-color: #1BBFBB !important;
 }
+
+
+.ant-btn:hover, .ant-btn:focus{
+  border-color: #1BBFBB !important;
+}
+
+.table-procedure  tr:nth-child(1) td:nth-child(4){background: #1BBFBB; color: white; font-weight: 600}
+.table-procedure  tr:nth-child(2) td:nth-child(4){background : rgba(133, 221, 218, 1); font-weight: 600} 
+.table-procedure  tr:nth-child(3) td:nth-child(4){background : rgb(206, 241, 240); font-weight: 600}
+.table-procedure  tr:nth-child(4) td:nth-child(4){background : rgb(242, 252, 252); font-weight: 600}
+.table-procedure  td:nth-child(4){text-align: center}
+
+
+.table-adverse-events tr:nth-child(1) td:nth-child(2){background: rgb(240, 115, 150); color: white; font-weight: 600}
+.table-adverse-events tr:nth-child(2) td:nth-child(2){background : rgb(245, 153, 179);font-weight: 600} 
+.table-adverse-events  tr:nth-child(3) td:nth-child(2){background : rgb(248, 195, 210);font-weight: 600} 
+.table-adverse-events  tr:nth-child(4) td:nth-child(2){background : rgb(253, 243, 246);font-weight: 600} 
+
 
 .login-form-forgot{
   text-align: center !important
@@ -326,6 +344,7 @@ border-radius: 15px !important;
     text-align: right;
     margin-left: auto;
     position: absolute;
+    z-index: 1;
 }
 
 .card-info{

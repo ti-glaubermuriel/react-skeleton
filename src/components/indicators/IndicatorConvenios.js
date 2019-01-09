@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Spin, Button, Modal } from "antd";
+import { Card, Spin, Button, Modal, Tooltip } from "antd";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import api from "../../services/api";
@@ -38,15 +38,7 @@ class IndicatorConvenios extends Component {
     api
       .post("dashboard/medical_plans/", objFilters)
       .then(res => {
-        const newData = [];
-        res.data.labels.forEach(function(value, index) {
-          newData.push({
-            name: value,
-            value: res.data.data[index],
-            color: getRandomColor()
-          });
-        });
-    
+  
 
         this.setState({
           loading: false,
@@ -136,12 +128,14 @@ class IndicatorConvenios extends Component {
       <div>
         <Card className="card-indicator">
           <div className="card-details">
+          <Tooltip placement="topLeft" title="Visualizar detalhes">
             <Button
-              shape="circle"
+              shape="circle" 
               icon="search"
               className="btn-card-details"
               onClick={this.showModal}
             />
+            </Tooltip>
           </div>
           <div className="card-number">
             <span>
@@ -155,12 +149,13 @@ class IndicatorConvenios extends Component {
           <Modal
             title="Convênios atendidos"
             zIndex="565565"
+            key="1"
             visible={this.state.modalVisible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
             style={{ minWidth: '800px'}}
             footer={[
-              <Button type="primary" >
+              <Button type="primary"  className="btn-custom-primary" key="1" onClick={this.handleCancel}>
                 OK
               </Button>
             ]}

@@ -60,7 +60,7 @@ class IndicatorTurnover extends Component {
                 <Card className="card-indicator">
                     <div className="card-details">
                         <Tooltip placement="topLeft" title="Visualizar detalhes">
-                            <Button shape="circle" icon="search" className="btn-card-details" />
+                            <Button shape="circle" key="1" icon="search" className="btn-card-details" />
                         </Tooltip>
                     </div>
                     <div className="card-number">

@@ -48,6 +48,20 @@ class ChartTopPharma extends Component {
       .post("dashboard/consumption_data/drugs/", objFilters)
       .then(res => {
 
+        // convert array in string html tootip
+        const newData = [];
+        res.data.values.forEach(function (value, index) {
+
+          let tootipHtml = "";
+
+          res.data.tooltips[index].forEach(function (valueTootip, indexTootip) {
+              tootipHtml += "<br>" + valueTootip
+          });
+
+          newData.push({y: value, 'tootip': tootipHtml });
+
+        });
+
 
         this.setState({
           loading: false,
@@ -55,14 +69,14 @@ class ChartTopPharma extends Component {
           series: [{
             showInLegend: false,
             name: " ",
-            data: res.data.values.slice(0, 10)
+            data: newData.slice(0, 10)
           }]
           ,
           categoriesModal: res.data.labels, 
           seriesModal: [{
             showInLegend: false,
             name: " ",
-            data: res.data.values
+            data: newData
           }]
         });
 
@@ -135,7 +149,7 @@ class ChartTopPharma extends Component {
       ],
       series: this.state.series,
       tooltip: {
-        pointFormat: '{point.y} usos',
+        pointFormat: '{point.y} usos {point.tootip}',
         backgroundColor: "rgba(0, 0, 0, 0.70)",
         borderWidth: 0,
         borderRadius: 5,
@@ -187,7 +201,7 @@ class ChartTopPharma extends Component {
       ],
       series: this.state.seriesModal,
       tooltip: {
-        pointFormat: '{point.y} usos',
+        pointFormat: '{point.y} usos {point.tootip}',
         backgroundColor: "rgba(0, 0, 0, 0.70)",
         borderWidth: 0,
         borderRadius: 5,

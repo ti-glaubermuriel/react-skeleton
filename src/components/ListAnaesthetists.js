@@ -27,7 +27,6 @@ class ListAnaesthetists extends Component {
 
 
   loadData = () => {
-    console.log('## load data ##');
 
     this.setState({'initLoading': true});
     let objFilters = getRequestFilters();
@@ -36,8 +35,6 @@ class ListAnaesthetists extends Component {
       .post("/dashboard/total/anaesthetists/", objFilters)
       .then(res => {
         
-        //setTimeout(() => this.setState({initLoading: false,listAnesthetists: res.data.slice(0, 5), listAllAnesthetists: res.data}), 3000);
-
         this.setState({
           initLoading: false,
           listAnesthetists: res.data.slice(0, 5),
@@ -110,7 +107,7 @@ class ListAnaesthetists extends Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={[
-            <Button type="primary" onClick={this.handleOk}>
+            <Button type="primary" className="btn-custom-primary" onClick={this.handleCancel} key="1">
               OK
             </Button>
           ]}

@@ -277,10 +277,21 @@ color: #1bbfbb !important
   border-color: #1BBFBB !important;
 }
 
+
+.column-letter {
+  text-transform: lowercase;
+  display: block;
+}
+
+.column-letter::first-letter {
+  text-transform: uppercase;
+}
+
 .table-procedure  tr:nth-child(1) td:nth-child(4){background: #1BBFBB; color: white; font-weight: 600}
-.table-procedure  tr:nth-child(2) td:nth-child(4){background : rgba(133, 221, 218, 1); font-weight: 600} 
-.table-procedure  tr:nth-child(3) td:nth-child(4){background : rgb(206, 241, 240); font-weight: 600}
-.table-procedure  tr:nth-child(4) td:nth-child(4){background : rgb(242, 252, 252); font-weight: 600}
+.table-procedure  tr:nth-child(2) td:nth-child(4){background: #1bbfbba6;  font-weight: 600}
+.table-procedure  tr:nth-child(3) td:nth-child(4){background : #1bbfbb66; font-weight: 600} 
+.table-procedure  tr:nth-child(4) td:nth-child(4){background : #1bbfbb2e; font-weight: 600}
+.table-procedure  tr:nth-child(5) td:nth-child(4){background : rgb(242, 252, 252); font-weight: 600}
 .table-procedure  td:nth-child(4){text-align: center}
 
 
@@ -373,8 +384,8 @@ border-radius: 15px !important;
 }
 
 
-.card-number span.small{
-  font-size:2.3vw;
+.card-number small{
+  font-size:1.6vw;
   color: #1bbfbb !important;
   margin-top: 5px;
   height: 54px;

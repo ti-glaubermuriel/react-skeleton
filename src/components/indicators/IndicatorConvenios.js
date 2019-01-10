@@ -140,6 +140,7 @@ class IndicatorConvenios extends Component {
           <div className="card-number">
             <span>
               <Spin className="ant-spin-lg" spinning={this.state.loading}>
+              &nbsp;
                 {this.state.value}
               </Spin>
             </span>

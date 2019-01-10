@@ -45,9 +45,11 @@ export const DateDiff = arrayPeriod => {
 export const ConvertSecondsToHourMinute = seconds => {
   try {
 
-    let time = (seconds) ? moment().startOf('day').seconds(seconds).format('HH:mm') : '00:00';
+    let hour = (seconds) ? moment().startOf('day').seconds(seconds).format('HH') : '00';
+    let minute = (seconds) ? moment().startOf('day').seconds(seconds).format('mm') : '';
 
-    return time;
+
+    return [hour, minute];
 
   } catch (error) {
     return '?';
@@ -84,6 +86,9 @@ export const LetterAvatar = str => {
     return '?';
   }
 };
+
+
+
 
 
 // Get random exdecimal array colors

@@ -36,7 +36,7 @@ class MenuComponent extends Component {
                 <span>Visão geral</span>{" "}
               </Link>
             </Menu.Item>
-
+          
             <Menu.Item key="2">
               <Link to="/app/pharma">
                 {" "}

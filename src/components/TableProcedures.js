@@ -58,7 +58,7 @@ class TableProcedures extends Component {
         const columns = [{
             title: 'Procedimento',
             dataIndex: 'procedure',
-
+            render: procedure => <span class="column-letter">{procedure}</span>
         }, {
             title: '',
             dataIndex: 'time_surgery',
